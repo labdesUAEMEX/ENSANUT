@@ -1,0 +1,10 @@
+require(questionr)
+require(dplyr)
+#Grupos de edad
+gtablasa <- tablasa %>%
+  as_tibble() %>%
+  mutate(g=case_when(EDAD.x>=20 & EDAD.x<=29 ~1,
+                     EDAD.x>=30 & EDAD.x<=39 ~2,
+                     EDAD.x>=60 ~3))
+table(gtablasa$g)
+wtd.table(gtablasa$g,weights = gtablasa$FACTOR)
