@@ -1,0 +1,11 @@
+require(questionr)
+require(dplyr)
+#Situción conyugal
+ctablasa <- tablasa %>%
+  as_tibble() %>%
+  mutate(c= case_when(P3_19==1 | P3_19==6 ~1,
+                      P3_19>=2 & P3_19<=4 ~2,
+                      P3_19==5 ~3,
+                      P3_19==7 ~4))
+table(ctablasa$c)
+wtd.table(ctablasa$c,weights = ctablasa$FACTOR)
