@@ -1,0 +1,13 @@
+require(questionr)
+require(dplyr)
+#Sexos
+hasa <- tablasa %>%
+  as_tibble() %>%
+  filter(SEXO.x==1) %>%
+  mutate(h=case_when(SEXO.x==1~1))
+masa <- tablasa %>%
+  as_tibble() %>%
+  filter(SEXO.x==2) %>%
+  mutate(m=case_when(SEXO.x==2~1))
+wtd.table(hasa$h,weights = hasa$FACTOR)
+wtd.table(masa$m,weights = masa$FACTOR)
