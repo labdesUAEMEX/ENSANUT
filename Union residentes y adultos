@@ -1,0 +1,16 @@
+library(readr)
+resi <- read.csv(file.choose())
+adul <- read.csv(file.choose())
+
+resi1 <- data.frame(resi,
+                    upm=as.character(resi$UPM),
+                    viv_sel=as.character(resi$VIV_SEL),
+                    hogar=as.character(resi$HOGAR),
+                    numren=as.character(resi$NUMREN))
+adul1 <- data.frame(adul,
+                    upm=as.character(adul$UPM),
+                    viv_sel=as.character(adul$VIV_SEL),
+                    hogar=as.character(adul$HOGAR),
+                    numren=as.character(adul$NUMREN))
+llave <- c("upm","viv_sel","hogar","numren")
+tabla <- merge(resi1,adul1, by=llave, all = T)
