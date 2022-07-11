@@ -1,0 +1,7 @@
+require(questionr)
+require(dplyr)
+# asalariados
+tablasa <- tabla %>%
+  as_tibble() %>%
+  mutate(a=case_when((P3_21==1 & P3_23<=3)~1, (P3_21==2 & P3_22<=5 & P3_23<=3)~2)) %>%
+  filter(a==1 | a==2)
